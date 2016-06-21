@@ -361,14 +361,17 @@ void ConfigVersion( void )
 	//undefine PPCS_AES_P2P
 	//undefine NEW_BRAOD_AES
 	//4.5.12.20
-	
+
+	/* add begin by yiqing, 2016-06-21*/
+	////define PPCS_AES_P2P
+	//4.5.11.20
 
 	/* add begin by yiqing, 2016-06-20*/
 	//check_user.cgi添加type字段，新版子返回type=1
 	//define PPCS_AES_P2P
 	//define NEW_BRAOD_AES
 	//4.5.12.21
-	nVersion = 21;
+	nVersion = 20;
 
 #elif defined (PREFIX_OBJ)  //new kernel
     /* add begin by yiqing, 2015-06-11, 原因: */

@@ -73,7 +73,7 @@
 //61=BAFANGDIANZI
 
 
-#define LANGUAGE_ID 2   //1=Chinese
+#define LANGUAGE_ID 1   //1=Chinese
 						//2=English
 
 #define PRODUCT_ID  1   //1=MJPEG
@@ -200,7 +200,7 @@
 #define MAJOR_VERSION   5
 
 
-#define NEW_BRAOD_AES  //英国客户新版
+//#define NEW_BRAOD_AES  //英国客户新板子
 #ifdef NEW_BRAOD_AES
 #define SUPPORT_FM34
 #define SUPPORT_IRCUT
