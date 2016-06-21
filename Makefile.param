@@ -1,0 +1,21 @@
+export CROSS:=mipsel-linux-
+export CC:=$(CROSS)gcc
+export CCC:=$(CROSS)g++
+export AR:=$(CROSS)ar
+
+OSDRV:=
+SDK_DIR:=$(PWD)
+LIB_PATH:=$(SDK_DIR)
+NVS_PATH:=$(SDK_DIR)
+LIBS:=
+#$(LIB_PATH)/out/lib/libsalsa.a
+
+INC_PATH:=-I$(SDK_DIR)/web -I$(SDK_DIR)/include -I$(SDK_DIR)/biz_include \
+	-I$(SDK_DIR)/vbuf/include \
+	-I/home/yiqing/5350/RT288x_SDK/source/lib/libnvram \
+	-I/home/yiqing/5350/RT288x_SDK/source/linux-2.6.21.x/include \
+	-I/home/yiqing/5350/RT288x_SDK/source/linux-2.6.21.x/drivers/char \
+	-DCONFIG_RALINK_RT5350
+#		  -I$(SDK_DIR)/alsa
+LDFLAGS :=
+ARFLAGS :=

@@ -1,0 +1,107 @@
+#
+# Top Makefile of center system in DVR project.
+#
+# Author: ROADJUN
+# Creation Date: 2009-04-04
+# Modifier:
+# Last Modification Date:
+#
+#
+# tags:
+#     all    -- default tag, include: comm, dvr watch
+#     comm   -- make all public parts
+#     dvr    -- make dvr process
+#
+
+include ./Makefile.param
+# User Management switch
+UMSW    = -DUSER_MANAGEMENT_SUPPORT
+# Digest Access switch
+DASW    = -DDIGEST_ACCESS_SUPPORT
+
+CFLAGS := -Wall -O2 $(INC_PATH) -DUSER_AUTH -D_FILE_OFFSET_BITS=64 -g -rdynamic -DLINUX
+CFLAGS += -DWEBS -DUEMF -DOS="LINUX" -DLINUX $(UMSW) $(DASW) $(SSLSW) $(IFMODSW) -D__NO_CGI_BIN $(FACTORY)
+
+COMMDIRS = audio acodec video func network param web factory p2p
+DVRDIRS  = $(COMMDIRS)
+WORKDIR  = out
+ALLDIRS  = $(COMMDIRS) $(WATCHDIRS) $(DVRDIRS) $(BCASTDIR) $(CHECKDIR) $(WORKDIR)
+
+####################################################
+#
+#MJEPG 	=	1500	= 	liblounny085
+#HD		=	1600	=	liblounny084
+#MJPEG+AP	1700	=	liblounny086
+#HD+AP	=	1700	=	liblounny086
+#			1900	=	liblounny199
+#
+ENCRPT_LIBS = /Lib/ENCRYPT/liblounny199.a
+#AP_MODULE = NORMAL
+#CFLAGS += -DENABLE_AP
+AP_MODULE = AP_MODULE
+####################################################
+P2P_OBJS	=	\
+        /Lib/P2P/libPPPP_API_20151211.a    \
+
+BIZ_OBJS	=	\
+		/Lib/biz_lib/libBiz_API_test.a	\
+		/Lib/biz_lib/libs3.a	\
+		/Lib/biz_lib/libcurl.a	\
+		/Lib/biz_lib/libmxml.a	
+
+P2P_BIZ_LIB  = /Lib/P2P/libBPPP_API_20150423.a
+
+####################################################  
+####################################################
+#sonix 291a		= lib291a.a
+#sonix 291b		= lib291b.a
+#ait 8433		= lib8433.a
+####################################################
+#SENSOR_LIB	= /Lib/SENSOR/lib3861.a
+#CFLAGS += -DSENSOR_3861
+
+#SENSOR_LIB	= /Lib/SENSOR/lib291a.a
+#CFLAGS += -DSENSOR_291A
+
+#SENSOR_LIB	= /Lib/SENSOR/lib291b.a
+#CFLAGS += -DSENSOR_291B
+
+SENSOR_LIB	= /Lib/SENSOR/libait8433.a	\
+		/Lib/SENSOR/AitXU.o		\
+		/Lib/SENSOR/SkypeXU.o	\
+		/Lib/SENSOR/UvcXU.o
+
+CFLAGS += -DSENSOR_8433
+#####################################################
+
+export
+unexport SUBDIRS
+
+
+.PHONY : all
+all: comm encoder
+
+
+.PHONY : comm
+comm:
+	@( \
+	for dir in $(COMMDIRS); do \
+	  $(MAKE) -C $$dir; \
+	done; \
+	)
+
+.PHONY : encoder
+encoder:
+	@( \
+	for dir in $(DVRDIRS); do \
+	  $(MAKE) -C $$dir; \
+	done; \
+	$(MAKE) -C $(WORKDIR) encoder; \
+	)
+.PHONY : clean
+clean:
+	@( \
+	for dir in $(ALLDIRS); do \
+	  $(MAKE) -C $$dir clean; \
+	done; \
+	)
