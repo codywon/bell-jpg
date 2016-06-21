@@ -97,7 +97,7 @@ all: encoder
 
 encoder: $(ENCODER_OBJS);
 	@echo "create executable file: $@ ..."
-	$(CCC) -I../include -I../web -lpthread -lm -o $@ $^  $(TUTK_LIB) $(P2P_OBJS) $(NVRAM_OBJS) $(ENCRPT_LIBS) $(WEB_OBJS) $(WPS_LIB) $(OBJ_LIB) $(BIZ_OBJS) $(SENSOR_LIB) $(LIBWIFI)
+	$(CCC) -I../include -I../web -lpthread -lm -o $@ $^  $(TUTK_LIB) $(P2P_OBJS) $(NVRAM_OBJS) $(ENCRPT_LIBS) $(WEB_OBJS) $(WPS_LIB) $(OBJ_LIB)  $(SENSOR_LIB) $(LIBWIFI)
 	@echo "create executable file end"
 #$(ENCODER_OBJS)
 	mipsel-linux-strip encoder

@@ -75,6 +75,7 @@
 
 #define LANGUAGE_ID 1   //1=Chinese
 						//2=English
+						//对于英国客户来说，1:ppcs  2:pppp
 
 #define PRODUCT_ID  1   //1=MJPEG
 //2=HD720(AIT-8433/SONIX 291A/B)

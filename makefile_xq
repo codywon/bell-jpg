@@ -41,7 +41,7 @@ ENCRPT_LIBS = /Lib/ENCRYPT/liblounny199.a
 AP_MODULE = AP_MODULE
 ####################################################
 P2P_OBJS	=	\
-        /Lib/P2P/libPPPP_API_201523.a    \
+        /Lib/P2P/libPPPP_API_20151211.a    \
 
 BIZ_OBJS	=	\
 		/Lib/biz_lib/libBiz_API_test.a	\

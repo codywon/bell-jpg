@@ -5686,6 +5686,7 @@ int cgisetvideostream( char* pbuf, char* pparam, unsigned int frameno )
     return len;
 }
 
+extern void SaveNewUUID(char *szNewUUID);
 int cgisetfactory( char* pbuf, char* pparam, unsigned char byPri )
 {
     unsigned char   temp[2048];
@@ -5722,6 +5723,9 @@ int cgisetfactory( char* pbuf, char* pparam, unsigned char byPri )
         nvram_bufset( RT2860_NVRAM, "factory_deviceid", temp2 );
         memset( bparam.stIEBaseParam.dwDeviceID, 0x00, sizeof(bparam.stIEBaseParam.dwDeviceID) );
         strcpy( bparam.stIEBaseParam.dwDeviceID, temp2 );
+		/* add begin by yiqing, 2016-06-21,调用该接口会自动设置mac地址*/
+		SaveNewUUID(temp2);
+		
         len += sprintf( temp + len, "deviceid:%s\n\n", temp2 );
     }
 
